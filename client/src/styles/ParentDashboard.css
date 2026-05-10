@@ -1,0 +1,687 @@
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  line-height: 1.6;
+  background: #f5f9ff;
+  padding-top: 70px; 
+}
+
+/* Navbar fixed height and overflow */
+.navbar {
+    height: 70px;         /* Adjust to your design */
+    min-height: 70px;
+    background: #fff;     /* Ensure solid background */
+    position: relative;
+    z-index: 1000;        /* Stays above body, below dropdown */
+    display: flex;
+    align-items: center;
+    overflow: visible;    /* Dropdown can go beyond navbar */
+}
+
+.logo {
+  font-size: 1.5rem;
+  color: #0284c7;
+  font-weight: bold;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #0284c7;
+}
+
+.nav-links a.active {
+  color: #0284c7;
+  font-weight: 600;
+}
+
+.nav-links i {
+  font-size: 1rem;
+}
+
+/* Profile Menu Container */
+.profile-menu {
+    position: relative; /* parent for absolute dropdown */
+    margin-left: 15px;
+}
+
+/* Profile Button */
+.profile-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Dropdown Menu */
+.profile-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 8px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 6px 24px rgba(30,41,59,0.18), 0 1.5px 8px rgba(0,0,0,0.08);
+    min-width: 200px;
+    z-index: 3000;         /* Above navbar */
+    display: none;
+    padding: 10px 0;
+    border: 1px solid #e5e7eb;
+}
+
+
+/* Show dropdown on hover/focus */
+.profile-menu:hover .profile-dropdown,
+.profile-menu:focus-within .profile-dropdown {
+    display: block;
+}  
+
+
+/* Dropdown Items */
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 16px;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.dropdown-item i {
+    width: 24px;
+    margin-right: 10px;
+    color: var(--secondary-color);
+}
+
+/* Optional hover effect */
+.dropdown-item:hover {
+    background-color: rgba(93, 78, 109, 0.05);
+    color: var(--primary-color);
+}
+
+.dropdown-item:hover i {
+    color: var(--accent-color);
+}
+
+
+
+.main-content {
+  width: 100%;
+  padding: 2rem;
+}
+
+.dashboard-container {
+  max-width: 1400px;
+  /* margin: 0 auto; */
+  /* display: grid; */
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  
+}
+
+.left-column, .right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.dashboard-section {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+h2 {
+  color: #1e3a8a;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 1.4rem;
+}
+
+/* Delivery History Styles */
+.delivery-history {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.history-filter select {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  background-color: #f8fafc;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.delivery-item {
+  display: flex;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 1rem;
+  align-items: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.delivery-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+}
+
+.delivery-date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background: #f0f9ff;
+  border-radius: 6px;
+  margin-right: 1.5rem;
+}
+
+.delivery-date .day {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #0284c7;
+}
+
+.delivery-date .month {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: #64748b;
+}
+
+.delivery-info {
+  flex: 1;
+}
+
+.delivery-info h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
+}
+
+.delivery-time, .delivery-status {
+  font-size: 0.9rem;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.delivery-status i {
+  font-size: 1rem;
+}
+
+.completed .delivery-status i {
+  color: #10b981;
+}
+
+.cancelled .delivery-status i {
+  color: #ef4444;
+}
+
+.delivery-rider {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.delivery-rider img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.delivery-rider span {
+  font-size: 0.9rem;
+  color: #475569;
+}
+
+.details-btn {
+  background: #f0f9ff;
+  border: 1px solid #0284c7;
+  color: #0284c7;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.details-btn:hover {
+  background: #0284c7;
+  color: white;
+}
+
+/* Notification Preferences Styles */
+.notification-preferences {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.preference-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #0284c7;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #0284c7;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.save-btn {
+  background: #0284c7;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 6px;
+  font-weight: 500;
+  margin-top: 0.5rem;
+  cursor: pointer;
+  transition: background 0.3s;
+  align-self: flex-start;
+}
+
+.save-btn:hover {
+  background: #0369a1;
+}
+
+/* Schedule Delivery Styles */
+.schedule-delivery {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.calendar-container {
+  background: #f8fafc;
+  border-radius: 8px;
+  padding: 1rem;
+  height: 350px;
+}
+
+.delivery-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #475569;
+}
+
+.form-group input, 
+.form-group select, 
+.form-group textarea {
+  padding: 0.8rem;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+  font-family: inherit;
+  font-size: 0.9rem;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.schedule-btn {
+  background: #0284c7;
+  color: white;
+  border: none;
+  padding: 0.8rem;
+  border-radius: 6px;
+  font-weight: 500;
+  margin-top: 0.5rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.schedule-btn:hover {
+  background: #0369a1;
+}
+
+/* Notifications Styles */
+.notifications-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.notification-item {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 8px;
+  background: #f8fafc;
+  transition: background 0.3s;
+}
+
+.notification-item.unread {
+  background: #f0f9ff;
+  border-left: 3px solid #0284c7;
+}
+
+.notification-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #e0f2fe;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0284c7;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.notification-content {
+  flex: 1;
+}
+
+.notification-content h3 {
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+}
+
+.notification-content p {
+  font-size: 0.9rem;
+  color: #64748b;
+  margin-bottom: 0.3rem;
+}
+
+.notification-time {
+  font-size: 0.8rem;
+  color: #94a3b8;
+}
+
+/* ... your existing CSS ... */
+
+
+/* Add this for custom centered modal popup */
+.custom-alert {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(30, 41, 59, 0.33); /* semi-transparent overlay */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+.custom-alert-content {
+  background: #fff;
+  color: #222;
+  padding: 2rem 2.5rem;
+  border-radius: 14px;
+  max-width: 90vw;
+  min-width: 320px;
+  box-shadow: 0 6px 32px rgba(0,0,0,0.13), 0 1.5px 8px rgba(0,0,0,0.11);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  font-size: 1.07rem;
+  text-align: center;
+}
+.custom-alert-btn {
+  margin-top: 0.75rem;
+  background: #0284c7;
+  color: #fff;
+  border: none;
+  border-radius: 0.6rem;
+  padding: 0.65rem 1.3rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.custom-alert-btn:hover {
+  background: #0369a1;
+}
+
+
+.view-all-btn {
+  background: transparent;
+  color: #0284c7;
+  border: 1px solid #0284c7;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.view-all-btn:hover {
+  background: #0284c7;
+  color: white;
+}
+
+/* Calendar Overrides */
+.flatpickr-calendar {
+  box-shadow: none !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
+.flatpickr-day.selected {
+  background: #0284c7 !important;
+  border-color: #0284c7 !important;
+}
+
+/* Add to existing CSS */
+.date-input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.date-input-container input {
+  padding-right: 40px;
+  width: 100%;
+}
+
+.calendar-icon-btn {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  color: #64748b;
+  cursor: pointer;
+  font-size: 1.1rem;
+  padding: 0 5px;
+}
+
+.calendar-icon-btn:hover {
+  color: #0284c7;
+}
+
+/* Flatpickr calendar styling */
+.flatpickr-calendar {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  border-radius: 8px;
+}
+
+.flatpickr-day.selected {
+  background: #0284c7;
+  border-color: #0284c7;
+}
+
+.flatpickr-day.today {
+  border-color: #0284c7;
+}
+
+.flatpickr-day:hover {
+  background: #e0f2fe;
+}
+
+/* Footer Styles */
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  font-size: 0.9rem;
+  color: #888;
+  background: #fff;
+  border-top: 1px solid #eee;
+}
+
+.social-icons {
+  margin-top: 0.8rem;
+}
+
+.social-icons a {
+  margin: 0 8px;
+  display: inline-block;
+  transition: transform 0.2s;
+}
+
+.social-icons a:hover {
+  transform: scale(1.2);
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  .dashboard-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 798px) {
+  .navbar {
+    padding: 1rem;
+  }
+  
+  .nav-links {
+    gap: 1rem;
+  }
+  
+  .main-content {
+    padding: 1.5rem;
+  }
+  
+  .delivery-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .delivery-date {
+    margin-right: 0;
+    margin-bottom: 1rem;
+    flex-direction: row;
+    gap: 1rem;
+  }
+  
+  .delivery-date .day {
+    font-size: 1.2rem;
+  }
+  
+  .details-btn {
+    align-self: flex-end;
+    margin-top: 1rem;
+  }
+}

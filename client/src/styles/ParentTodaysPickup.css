@@ -1,0 +1,566 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  line-height: 1.6;
+  background: #f5f9ff;
+  padding-top: 70px; 
+}
+
+.navbar {
+    height: 70px;         /* Adjust to your design */
+    min-height: 70px;
+    background: #fff;     /* Ensure solid background */
+    position: relative;
+    z-index: 1000;        /* Stays above body, below dropdown */
+    display: flex;
+    align-items: center;
+    overflow: visible;    /* Dropdown can go beyond navbar */
+}
+
+.logo {
+  font-size: 1.5rem;
+  color: #0284c7;
+  font-weight: bold;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #0284c7;
+}
+
+.nav-links a.active {
+  color: #0284c7;
+  font-weight: 600;
+}
+
+.nav-links i {
+  font-size: 1rem;
+}
+
+/* Profile Menu Styles */
+.profile-menu {
+    position: relative;
+    margin-left: 15px;
+}
+
+.profile-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-btn:hover {
+    background-color: rgba(93, 78, 109, 0.1);
+    color: var(--accent-color);
+}
+
+/* Profile Dropdown */
+.profile-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 8px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 6px 24px rgba(30,41,59,0.18), 0 1.5px 8px rgba(0,0,0,0.08);
+    min-width: 200px;
+    z-index: 3000;         /* Above navbar */
+    display: none;
+    padding: 10px 0;
+    border: 1px solid #e5e7eb;
+}
+
+/* Show dropdown on hover/focus */
+.profile-menu:hover .profile-dropdown,
+.profile-menu:focus-within .profile-dropdown {
+    display: block;
+}
+
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 16px;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.dropdown-item i {
+    width: 24px;
+    margin-right: 10px;
+    color: var(--secondary-color);
+}
+
+.dropdown-item:hover {
+    background-color: rgba(93, 78, 109, 0.05);
+    color: var(--primary-color);
+}
+
+.dropdown-item:hover i {
+    color: var(--accent-color);
+}
+
+.main-content {
+  width: 100%;
+  padding: 2rem;
+}
+
+.content-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.main-area {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+h2 {
+  color: #1e3a8a;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.pickup-time {
+  font-size: 1.1rem;
+  color: #555;
+}
+
+.details-row {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.rider-card {
+  background-color: #f0f9ff;
+  padding: 1.5rem;
+  border-radius: 10px;
+  border-left: 4px solid #0284c7;
+  flex: 2;
+}
+
+.rider-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.rider-photo {
+  position: relative;
+}
+
+.rider-photo img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #0284c7;
+}
+
+.rider-rating {
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #0284c7;
+  color: white;
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.rider-info h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.verified-badge {
+  font-size: 0.8rem;
+  background-color: #dcfce7;
+  color: #166534;
+  padding: 0.2rem 0.5rem;
+  border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.rider-stats {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.rider-stats span {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.rider-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.detail-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  padding: 0.8rem;
+  background-color: #e6f4ff;
+  border-radius: 8px;
+}
+
+.detail-item i {
+  color: #0284c7;
+  font-size: 1.1rem;
+  margin-top: 0.2rem;
+}
+
+.detail-label {
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 0.2rem;
+  font-size: 0.9rem;
+}
+
+.tips-box {
+  background-color: #f8fafc;
+  padding: 1.5rem;
+  border-radius: 10px;
+  border-left: 4px solid #facc15;
+  flex: 1;
+}
+
+.tips-box h3 {
+  margin-bottom: 1rem;
+  color: #1e3a8a;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tips-box ul {
+  list-style: none;
+}
+
+.tips-box li {
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+}
+
+.tips-box i {
+  color: #0284c7;
+  margin-top: 0.2rem;
+}
+
+/* Horizontal Tracker Styles */
+.tracker-container {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.tracker-container h3 {
+  color: #1e3a8a;
+  margin-bottom: 0.5rem;
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+}
+
+.date-info {
+  font-size: 1rem;
+  color: #64748b;
+  margin-bottom: 2rem;
+}
+
+.horizontal-tracker {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  padding: 2rem 0;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  flex: 1;
+}
+
+.step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 1.5rem;
+  left: 50%;
+  width: calc(100% - 3rem);
+  height: 2px;
+  background: linear-gradient(to right, #d1cece, #d1cece 50%, transparent 50%);
+  background-size: 8px 100%;
+}
+
+.step.completed:not(:last-child)::after {
+  background: linear-gradient(to right, #0284c7, #0284c7 50%, transparent 50%);
+  background-size: 8px 100%;
+}
+
+.step-icon {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.8rem;
+  font-size: 1.2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.step.completed .step-icon {
+  background-color: #0284c7;
+  color: white;
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+}
+
+.step.current .step-icon {
+  background-color: #facc15;
+  color: white;
+  box-shadow: 0 4px 12px rgba(250, 204, 21, 0.4);
+}
+
+.step.upcoming .step-icon {
+  background-color: #e2e8f0;
+  color: #64748b;
+}
+
+.step-content {
+  text-align: center;
+  width: 100%;
+  padding: 0 0.5rem;
+}
+
+.step-title {
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
+}
+
+.step.completed .step-title {
+  color: #0284c7;
+}
+
+.step.current .step-title {
+  color: #1e3a8a;
+  font-weight: 700;
+}
+
+.step.upcoming .step-title {
+  color: #64748b;
+}
+
+.step-time {
+  font-size: 0.9rem;
+  color: #64748b;
+  margin-bottom: 0.3rem;
+}
+
+.step.completed .step-time {
+  color: #0284c7;
+  font-weight: 500;
+}
+
+.step-status {
+  font-size: 0.85rem;
+  color: #0284c7;
+  background: #e0f2fe;
+  padding: 0.3rem 0.6rem;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: 0.5rem;
+}
+
+.live-track-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background-color: #0284c7;
+  color: white;
+  border: none;
+  padding: 0.9rem 1.8rem;
+  border-radius: 50px;
+  font-weight: 600;
+  margin-top: 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+}
+
+.live-track-btn:hover {
+  background-color: #0369a1;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(2, 132, 199, 0.4);
+}
+
+/* Animation */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.pulse-animation {
+  animation: pulse 2s infinite;
+}
+
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  font-size: 0.9rem;
+  color: #888;
+  background: #fff;
+  border-top: 1px solid #eee;
+}
+
+.social-icons {
+  margin-top: 0.8rem;
+}
+
+.social-icons a {
+  margin: 0 8px;
+  display: inline-block;
+  transition: transform 0.2s;
+}
+
+.social-icons a:hover {
+  transform: scale(1.2);
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem;
+  }
+  
+  .nav-links {
+    gap: 1rem;
+  }
+  
+  .main-content {
+    padding: 1.5rem;
+  }
+  
+  .details-row {
+    flex-direction: column;
+  }
+  
+  .rider-header {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .rider-photo {
+    margin-bottom: 1rem;
+  }
+  
+  .rider-info h3 {
+    justify-content: center;
+  }
+  
+  .rider-stats {
+    justify-content: center;
+  }
+  
+  .horizontal-tracker {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem 0;
+  }
+  
+  .step {
+    flex-direction: row;
+    width: 100%;
+    margin-bottom: 1.5rem;
+    align-items: flex-start;
+  }
+  
+  .step:not(:last-child)::after {
+    top: 1.5rem;
+    left: 1.5rem;
+    width: 2px;
+    height: calc(100% - 1.5rem);
+    background: linear-gradient(to bottom, #e2e8f0, #e2e8f0 50%, transparent 50%);
+    background-size: 100% 8px;
+  }
+  
+  .step.completed:not(:last-child)::after {
+    background: linear-gradient(to bottom, #0284c7, #0284c7 50%, transparent 50%);
+    background-size: 100% 8px;
+  }
+  
+  .step-icon {
+    margin-right: 1rem;
+    margin-bottom: 0;
+  }
+  
+  .step-content {
+    text-align: left;
+    padding: 0;
+  }
+}

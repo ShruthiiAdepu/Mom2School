@@ -1,0 +1,570 @@
+/* register_with_plan.css - React Optimized Version */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    line-height: 1.6;
+    background: #f8fafc;
+    padding-top: 70px;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+}
+
+.logo {
+    font-size: 1.5rem;
+    color: #0284c7;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #0284c7;
+}
+
+.form-container {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.progress-steps {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.progress-steps::before {
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #e2e8f0;
+    z-index: 1;
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    cursor: pointer;
+}
+
+.step-number {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #e2e8f0;
+    color: #64748b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    transition: all 0.3s;
+}
+
+.step.active .step-number {
+    background: #0284c7;
+    color: white;
+}
+
+.step-label {
+    color: #64748b;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+}
+
+.step.active .step-label {
+    color: #0284c7;
+    font-weight: 500;
+}
+
+.main-heading {
+    text-align: center;
+    margin-bottom: 0.5rem;
+    color: #1e293b;
+    font-size: 1.8rem;
+}
+
+.subheading {
+    text-align: center;
+    color: #64748b;
+    margin-bottom: 2rem;
+    font-size: 1rem;
+}
+
+.form-step {
+    display: none;
+}
+
+.form-step.active {
+    display: block;
+}
+
+.form-section {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: #f8fafc;
+    border-radius: 8px;
+}
+
+.form-section h3 {
+    color: #1e293b;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.form-section h3 svg {
+    color: #0284c7;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group.full-width {
+    grid-column: span 2;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #334155;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border 0.3s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #0284c7;
+    box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.1);
+}
+
+.form-group input::placeholder {
+    color: #94a3b8;
+}
+
+.plans-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.plan-card {
+    position: relative;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.plan-card input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+}
+
+.plan-content {
+    padding: 1.5rem;
+    background: white;
+    height: 100%;
+}
+
+.plan-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    border-color: #0284c7;
+}
+
+.plan-card input[type="radio"]:checked + .plan-content {
+    background: #f0f9ff;
+    border: 2px solid #0284c7;
+}
+
+.plan-card h4 {
+    color: #1e293b;
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.plan-card .price {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #0284c7;
+    margin-bottom: 0.25rem;
+}
+
+.plan-card .price span {
+    font-size: 1rem;
+    color: #64748b;
+    font-weight: normal;
+}
+
+.plan-card .total-price {
+    color: #64748b;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.plan-features {
+    list-style: none;
+    margin: 1.5rem 0;
+}
+
+.plan-features li {
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    color: #334155;
+}
+
+.plan-features svg {
+    color: #0284c7;
+    margin-top: 0.2rem;
+    min-width: 16px;
+}
+
+.plan-footer {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px dashed #cbd5e1;
+}
+
+.best-value {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: #0284c7;
+    color: white;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.plan-card.popular {
+    border-color: #0284c7;
+}
+
+.plan-card.popular .plan-content {
+    border-top: 4px solid #0284c7;
+}
+
+.payment-container {
+    margin: 2rem 0;
+}
+
+.payment-methods {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.payment-method {
+    flex: 1;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.payment-method svg {
+    font-size: 2rem;
+    color: #64748b;
+}
+
+.payment-method.active {
+    border-color: #0284c7;
+    background: #f0f9ff;
+}
+
+.payment-method.active svg {
+    color: #0284c7;
+}
+
+.payment-form {
+    background: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+}
+
+.form-row {
+    display: flex;
+    gap: 1rem;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+.order-summary {
+    background: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.order-summary h4 {
+    margin-bottom: 1rem;
+    color: #1e293b;
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+    color: #334155;
+}
+
+.summary-item.total {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e2e8f0;
+    font-weight: bold;
+    color: #1e293b;
+}
+
+.form-navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.prev-btn, .next-btn, .submit-btn {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s;
+}
+
+.prev-btn {
+    background: #f1f5f9;
+    color: #64748b;
+}
+
+.prev-btn:hover {
+    background: #e2e8f0;
+}
+
+.next-btn, .submit-btn {
+    background: #0284c7;
+    color: white;
+}
+
+.next-btn:hover, .submit-btn:hover {
+    background: #0369a1;
+    transform: translateY(-2px);
+}
+
+.submit-btn {
+    background: #10b981;
+}
+
+.submit-btn:hover {
+    background: #059669;
+}
+
+/* Confirmation Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+.success-icon {
+    font-size: 3rem;
+    color: #16a34a;
+    margin-bottom: 1rem;
+}
+
+.modal-content h3 {
+    color: #1e3a8a;
+    margin-bottom: 1rem;
+}
+
+.modal-content p {
+    color: #475569;
+    margin-bottom: 1.5rem;
+}
+
+.modal-ok-btn {
+    background-color: #0284c7;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.modal-ok-btn:hover {
+    background-color: #0369a1;
+}
+
+footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    font-size: 0.9rem;
+    color: #64748b;
+    background: #fff;
+    border-top: 1px solid #e2e8f0;
+    margin-top: 2rem;
+}
+
+.social-icons {
+    margin-top: 1rem;
+}
+
+.social-icons a {
+    margin: 0 8px;
+    display: inline-block;
+    transition: transform 0.2s;
+}
+
+.social-icons a:hover {
+    transform: scale(1.2);
+}
+
+@media (max-width: 768px) {
+    .form-container {
+        padding: 1.5rem;
+    }
+    
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .form-group.full-width {
+        grid-column: span 1;
+    }
+    
+    .plans-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .payment-methods {
+        flex-direction: column;
+    }
+    
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    .progress-steps {
+        gap: 0.5rem;
+    }
+    
+    .step-label {
+        font-size: 0.8rem;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        flex-direction: column;
+        padding: 1rem;
+    }
+    
+    .nav-links {
+        margin-top: 1rem;
+        gap: 1rem;
+    }
+    
+    .form-container {
+        padding: 1rem;
+        margin-top: 1rem;
+    }
+    
+    .main-heading {
+        font-size: 1.5rem;
+    }
+}

@@ -1,0 +1,411 @@
+:root {
+  --primary-color: #0284C7;
+  --primary-light: #3b82f6;
+  --primary-dark: #1e40af;
+  --secondary-color: #10b981;
+  --accent-color: #f59e0b;
+  --danger-color: #ef4444;
+  --text-color: #1f2937;
+  --text-light: #6b7280;
+  --bg-color: #f9fafb;
+  --card-bg: #ffffff;
+  --border-color: #e5e7eb;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  line-height: 1.6;
+  min-height: 100vh;
+  padding-top: 80px;
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar {
+    height: 70px;         /* Adjust to your design */
+    min-height: 70px;
+    background: #fff;     /* Ensure solid background */
+    position: relative;
+    z-index: 1000;        /* Stays above body, below dropdown */
+    display: flex;
+    align-items: center;
+    overflow: visible;    /* Dropdown can go beyond navbar */
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+.user-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--text-light);
+}
+
+.status-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.status-indicator.active {
+  background-color: var(--secondary-color);
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+  align-items: center;
+}
+.nav-links a {
+  text-decoration: none;
+  color: black;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color 0.2s;
+}
+.nav-links a.active,
+.nav-links a:hover {
+  color: var(--primary-color);
+}
+
+/* Profile Menu and Dropdown */
+.profile-menu {
+  position: relative;
+  margin-left: 15px;
+}
+.profile-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  color: black;
+  font-size: 1.2rem;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+.profile-btn:hover {
+  background-color: rgba(93, 78, 109, 0.1);
+  color: var(--accent-color);
+}
+/* Profile Dropdown */
+.profile-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 8px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 6px 24px rgba(30,41,59,0.18), 0 1.5px 8px rgba(0,0,0,0.08);
+    min-width: 200px;
+    z-index: 3000;         /* Above navbar */
+    display: none;
+    padding: 10px 0;
+    border: 1px solid #e5e7eb;
+}
+
+/* Show dropdown on hover/focus */
+.profile-menu:hover .profile-dropdown,
+.profile-menu:focus-within .profile-dropdown {
+    display: block;
+}
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 16px;
+  color: var(--text-color);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+.dropdown-item i {
+  width: 24px;
+  margin-right: 10px;
+  color: black;
+}
+.dropdown-item:hover {
+  background-color: rgba(93, 78, 109, 0.05);
+  color: black;
+}
+.dropdown-item:hover i {
+  color: #0284C7 ;
+}
+
+/* Main Content Structure */
+.dashboard-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.welcome {
+  width: 100%;
+  text-align: center;
+  background: linear-gradient(135deg, #04405f, #1e59ba);
+  border-radius: 1rem;
+  padding: 2.5rem 1rem;
+  margin-bottom: 2rem;
+  color: white;
+}
+.welcome h2 {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+  color: white;
+  margin-left: 250px;
+}
+.welcome p {
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto;
+  opacity: 0.9;
+}
+
+.dashboard-section {
+  width: 100%;
+  background-color: var(--card-bg);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+/* BENEFITS: Row of cards */
+.benefit-cards {
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-top: 1.2rem;
+}
+.card {
+  flex: 1 1 220px;
+  background-color: #f8fafc;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  min-width: 200px;
+  box-sizing: border-box;
+  transition: transform 0.2s, box-shadow 0.2s;
+  max-width: 23%;
+}
+@media (max-width: 1100px) {
+  .card {
+    max-width: 47%;
+  }
+}
+@media (max-width: 700px) {
+  .card {
+    min-width: 90%;
+    max-width: 100%;
+  }
+}
+
+/* Section headers */
+.section-header {
+  margin-bottom: 1.1rem;
+}
+.section-header h3 {
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+.section-header h3 i {
+  color: var(--primary-color);
+}
+.section-subtitle {
+  color: var(--text-light);
+  font-size: 0.95rem;
+}
+
+/* Card icon for all .card, .step, etc. */
+.card-icon {
+  width: 48px;
+  height: 48px;
+  background-color: rgba(37, 99, 235, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+  font-size: 1.25rem;
+}
+
+/* HOW IT WORKS: Steps in a row */
+.steps-container {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-top: 1.2rem;
+}
+.step {
+  flex: 1 1 220px;
+  display: flex;
+  gap: 1rem;
+  min-width: 200px;
+  max-width: 32%;
+}
+
+.step-number {
+  width: 32px;
+  height: 32px;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+.step-content h4 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+.step-content p {
+  color: var(--text-light);
+  font-size: 0.95rem;
+}
+
+/* TRUST features row */
+.trust-features {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+.feature {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background-color: #f8fafc;
+  border-radius: 0.5rem;
+  min-width: 180px;
+  max-width: 23%;
+}
+@media (max-width: 1100px) {
+  .feature {
+    max-width: 47%;
+  }
+}
+@media (max-width: 700px) {
+  .feature {
+    min-width: 90%;
+    max-width: 100%;
+  }
+}
+
+.trust-badge {
+  background-color: rgba(16, 185, 129, 0.1);
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.badge-icon {
+  width: 48px;
+  height: 48px;
+  background-color: var(--secondary-color);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+.trust-badge p {
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.quick-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+/* Footer Styles */
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  font-size: 0.9rem;
+  color: #888;
+  background: #fff;
+  border-top: 1px solid #eee;
+  width: 100%;
+  margin-top: auto;
+}
+.social-icons {
+  margin-top: 0.8rem;
+}
+.social-icons a {
+  margin: 0 8px;
+  display: inline-block;
+  transition: transform 0.2s;
+}
+.social-icons a:hover {
+  transform: scale(1.2);
+}
+
+/* Mobile: stack cards/steps/features vertically */
+@media (max-width:900px) {
+  .dashboard-container {
+    max-width: 100%;
+    padding: 1rem 2px;
+    gap: 1rem;
+  }
+  .benefit-cards,
+  .steps-container,
+  .trust-features {
+    flex-direction: column;
+  }
+  .dashboard-section {
+    margin-bottom: 1rem;
+  }
+}
+@media (max-width: 480px) {
+  .welcome {
+    padding: 1.5rem 1rem;
+  }
+  .welcome h2 {
+    font-size: 1.5rem;
+  }
+  .welcome p {
+    font-size: 1rem;
+  }
+  .dashboard-section {
+    padding: 1.2rem;
+  }
+}
